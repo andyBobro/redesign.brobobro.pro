@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  @apply min-h-full h-full;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+#__nuxt {
+  @apply flex flex-col flex-grow flex-shrink-0 w-full min-h-full;
+}
+
+body {
+  @apply font-normal text-body text-neutral-50 bg-gray-800;
+  font-family: 'VT323', monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Press Start 2P', monospace;
+}
