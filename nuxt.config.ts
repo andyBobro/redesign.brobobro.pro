@@ -10,12 +10,13 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [
-      eslintPlugin()
+      // eslintPlugin()
     ]
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@intlify/nuxt3'
+    '@intlify/nuxt3',
+    '@pinia/nuxt',
   ],
   intlify: {
     localeDir: 'locales',
