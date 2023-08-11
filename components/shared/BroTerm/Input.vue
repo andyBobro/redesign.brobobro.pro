@@ -1,5 +1,8 @@
 <template>
-  <div class="flex border-t-2 border-dotted pt-8" @click="onCaretClick">
+  <div
+    class="h-40 items-center flex border-t-2 border-dotted py-8 cursor-text"
+    @click="onCaretClick"
+  >
     <div :class="['mr-4', {}]">
       {{ prefix }}
     </div>
@@ -17,19 +20,26 @@
       @keypress="onRealInputKeypress"
       @keyup="onReanInputKeyup"
       @change="onRealInputChange"
+    >
+
+    <pre
+      class="font-mono"
+      ref="displayedOutputBefore"
+      v-html="displayedCmd.before"
     />
 
-    <span ref="displayedOutputBefore" v-html="displayedCmd.before" />
-
-    <span
+    <pre
       ref="displayedOutputCaret"
-      class="caret h-full min-w-[2px] cursor-text bg-white text-black"
+      class="caret h-full min-w-[2px] min-h-[32px] bg-white text-black"
       @click="onCaretClick"
       v-html="displayedCmd.inner"
-    >
-    </span>
+    />
 
-    <span ref="displayedOutputAfter" v-html="displayedCmd.after"></span>
+    <pre
+      class="font-mono"
+      ref="displayedOutputAfter"
+      v-html="displayedCmd.after"
+    />
   </div>
 </template>
 
@@ -144,5 +154,9 @@ onMounted(() => {
 }
 .caret {
   animation: cursor 0.42s linear infinite;
+}
+
+pre {
+  font-family: "VT323" !important;
 }
 </style>

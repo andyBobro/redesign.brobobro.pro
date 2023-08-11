@@ -1,18 +1,22 @@
 <template>
-  <div>
+  <div ref="outputLine">
     {{parseLine(line)[0].content}}
   </div>  
 </template>
 
 <script setup>
-  import {defineProps} from 'vue';
+  
   import { SUBTASKS_NAMES } from '@/utils/constants'
+
+  const outputLine = ref()
 
   const {line} = defineProps({
     line: {
       required: true,
     }
   })
+
+  
 
   function parseLine (rawLine) {
     switch (rawLine.name) {

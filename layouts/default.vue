@@ -8,17 +8,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Default',
-  components: {},
-}
+<script setup>
 </script>
 
 <style lang="postcss" scoped>
 .default-layout {
-  &:after {
-    @apply absolute top-0 left-0 z-0 h-full w-full content-[''];
+  &:before {
+    @apply absolute top-0 left-0 z-[1] h-full w-full content-[''];
     background-image: linear-gradient(
         rgba(18, 16, 16, 0) 50%,
         rgba(0, 0, 0, 0.25) 50%

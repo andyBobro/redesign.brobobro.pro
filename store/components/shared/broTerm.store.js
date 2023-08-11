@@ -8,6 +8,7 @@ export const useBroTermStore = defineStore('broTerm', {
       // all these properties will have their type inferred automatically
       history: [],
       isRunning: false,
+      welcomeShown: false,
     }
   },
   actions: {
@@ -50,9 +51,10 @@ export const useBroTermStore = defineStore('broTerm', {
         this.history.push(subtask)
       })
     },
-
+    setWelcomeShown () {
+      this.welcomeShown = true
+    }
   },
   getters: {
-
   }
 })

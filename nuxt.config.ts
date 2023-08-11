@@ -2,6 +2,10 @@
 import eslintPlugin from 'vite-plugin-eslint';
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  components: [{
+    path: '@/components', // will get any components nested in let's say /components/nested
+    pathPrefix: false,
+  },],
   css: [
     '@/assets/styles/css/tailwind.css',
     '@/assets/styles/css/fonts.css',

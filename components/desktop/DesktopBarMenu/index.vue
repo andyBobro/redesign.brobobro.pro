@@ -1,0 +1,10 @@
+<template>
+  <nav>
+    <div>
+      <button></button>
+    </div>
+    <ul>
+      <li></li>
+    </ul>
+  </nav>
+</template>

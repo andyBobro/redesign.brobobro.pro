@@ -1,13 +1,26 @@
 <template>
-  <div>
-    <Line v-for="(block, i) in store.history" :line="block" :key="i" />
+  <div
+    ref="output"
+    class="h-256 flex flex-col flex-grow overflow-y-auto"
+  >
+    <div class="flex-grow" />
+    <Line
+      v-for="(block, i) in store.history"
+      :key="i"
+      :line="block"
+    />
   </div>
 </template>
 
 <script setup>
+import { ref, watchEffect, defineExpose } from 'vue'
 import Line from './Line.vue'
 import { useBroTermStore } from '@/store/components/shared/broTerm.store'
-const store = useBroTermStore()
 
-console.log(store);
+const output = ref(null)
+const store = useBroTermStore() 
+
+defineExpose({
+  el: output
+})
 </script>

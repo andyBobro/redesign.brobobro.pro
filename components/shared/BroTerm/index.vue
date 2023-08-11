@@ -1,32 +1,52 @@
 <template>
-  <div class="flex h-full w-full flex-col text-heading-5">
-    <div class="flex flex-grow flex-col overflow-auto pb-8">
-      <div class="flex-grow"></div>
-      <Output />
-    </div>
-    <Input @run="onRunCmd" />
+  <div
+    ref="termWrap"
+    class="relative flex max-h-full h-full max-w-full w-full flex-col text-heading-5"
+  >
+    <Output
+      ref="termOutput"
+    />
+    <Input
+      ref="termInput"
+      class="sticky bottom-0 left-0"
+      @run="onRunCmd"
+    />
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
-import { useLocalStorage } from '@vueuse/core'
+import { computed, onMounted, watchEffect } from 'vue'
+import { useElementSize } from '@vueuse/core'
 import { STORAGE_NAME } from '@/utils/constants'
 import Output from './Output.vue'
 import Input from './Input.vue'
 import { useBroTermStore } from '@/store/components/shared/broTerm.store'
+import { delay, TASKS, TASKS_NAMES } from '@/utils/constants'
+import { setMapStoreSuffix } from 'pinia'
 const store = useBroTermStore()
 
+const termWrap = ref(null)
+const termOutput = ref(null)
+const termInput = ref(null)
+const outMaxSize = ref(null)
 
-// call the action as a method of the store
 
-function onRunCmd(e) {
-  store.processInput(e)
+async function onRunCmd(e) {
+  await store.processInput(e)
 }
 
-onMounted(() => {
-  // const broTermStorage = useLocalStorage(STORAGE_NAME, )
+// const outputEl = computed(() => termOutput.value)
+watch(store.history, (nH, oH) => {
+  const el = termOutput.value.el
+  const scrollVal = [...el.children].reduce((_, e) => _ + e.offsetHeight, 0)
+  console.log(el, scrollVal);
+  el && (el.scrollTo({
+    top: scrollVal
+  }))
+})
 
-  // console.log(broTermStorage.value)
+onMounted(() => {
+  !store.welcomeShown && store.runTask(TASKS_NAMES.WELCOME)
+  store.setWelcomeShown()
 })
 </script>

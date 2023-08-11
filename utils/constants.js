@@ -12,6 +12,7 @@ export const TASKS_NAMES = {
 }
 export const SUBTASKS_NAMES = {
   WRITE: 'WRITE',
+  DRAW_TABLE: 'DRAW_TABLE',
 }
 export const TASKS_TYPES = {
   STATIC: 'STATIC',
@@ -28,6 +29,10 @@ export const SUBTASKS = {
     name: SUBTASKS_NAMES.WRITE,
     type: TASKS_TYPES.STATIC,
     exec_type: EXEC_TYPES.IMMEDIATE,
+  },
+  [SUBTASKS_NAMES.DRAW_TABLE]: {
+    name: SUBTASKS_NAMES.DRAW_TABLE,
+    type: TASKS_TYPES.STATIC,
   }
 }
 

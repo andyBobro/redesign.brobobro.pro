@@ -79,6 +79,8 @@ const state = reactive({
 
 const { x: gridX, y: gridY } = useElementBounding(entryGrid)
 
+const emit = defineEmits(['finish'])
+
 // OPTIMIZE COMPUTED
 
 // const refs = computed(() => {
@@ -231,6 +233,10 @@ onMounted(async () => {
     maxWidth: '1280px',
     duration: 1400,
   }).finished
+
+  setTimeout(() => {
+    emit('finish')
+  }, 2000)
 
   // CREATE GRID TYPE
 
