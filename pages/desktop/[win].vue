@@ -5,21 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, defineAsyncComponent } from 'vue'
-import DesktopUI from '@/components/desktop/DesktopUI/index.vue';
-import DesktopTopBar from '@/components/desktop/DesktopTopBar/index.vue';
-import DesktopBottomBar from '@/components/desktop/DesktopBottomBar/index.vue';
-import DesktopLink from '@/components/desktop/DesktopLink/index.vue';
-import { PagesNames, WindowPages } from '@/enums/pagesNames'
-import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import { computed, defineAsyncComponent } from 'vue'
+import { WindowPages } from '@/enums/pagesNames'
 import { camelCase, startCase } from 'lodash';
-
-
-const winModalStore = useWindowModalsStore()
 
 const windows = computed(() => {
   const route = useRoute()
-  const winParam = route.params.win
+  const winParam = route.params.win as string
   const winArr = winParam.split(',')
   console.log(winArr);
   
