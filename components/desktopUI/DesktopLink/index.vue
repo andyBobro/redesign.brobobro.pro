@@ -13,11 +13,6 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { PagesRoutes } from '@/enums/pagesNames';
-
-// interface RouteTo {
-
-// }
 
 interface Props {
   to?: any,

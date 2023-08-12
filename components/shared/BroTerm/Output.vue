@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, defineExpose } from 'vue'
+import { ref, defineExpose } from 'vue'
 import Line from './Line.vue'
 import { useBroTermStore } from '@/store/components/shared/broTerm.store'
 

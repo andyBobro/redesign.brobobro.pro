@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { delay, TASKS, SUBTASKS } from '@/utils/constants'
+import { delay, TASKS } from '@/utils/constants'
 
 export const useBroTermStore = defineStore('broTerm', {
   // arrow function recommended for full type inference
@@ -16,7 +16,7 @@ export const useBroTermStore = defineStore('broTerm', {
     // TODO HANDLE COMPLETE PROCESSING TASK SUBTASK 
 
     processInput(input) {
-      const { rawInput, tasks } = input
+      const { tasks } = input
 
       tasks.forEach(async (task) => {
         await this.runTask(task)
@@ -27,8 +27,6 @@ export const useBroTermStore = defineStore('broTerm', {
       const lowerTaskName = taskName.toLowerCase()
       const taskData = TASKS[lowerTaskName]
 
-      console.log(taskData);
-
       if (!taskData) {
         this.runSubtask({
           name: SUBTASKS_NAMES.WRITE,
@@ -38,8 +36,6 @@ export const useBroTermStore = defineStore('broTerm', {
       }
 
       const { subtasks } = taskData
-
-      console.log(subtasks);
 
       subtasks.forEach(async (subtask) => {
         await delay()

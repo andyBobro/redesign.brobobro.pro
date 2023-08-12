@@ -17,7 +17,8 @@ interface WindowModalStore {
   byId: Record<WindowPages, Record<WindowStateParams, boolean>>
 }
 
-interface WindowModalState {
+export interface WindowModalState {
+  name?: string,
   active?: boolean,
   opened?: boolean,
   fullscreen?: boolean,
@@ -50,11 +51,15 @@ export const useWindowModalsStore = defineStore('windowModals', {
     async initModalState(type :WindowPages) :Promise<void> {
       await this.setModalState(type, { 
         ...initialWindowModalState,
+        name: type,
         opened: true,
       })
     },
   },
   getters: {
+    getAllIds () {
+      return this.allIds
+    },
     getById () {
       return this.byId
     },
@@ -63,5 +68,22 @@ export const useWindowModalsStore = defineStore('windowModals', {
         return this.getById?.[id]
       }
     },
+    openedModals () {
+      return this.getAllIds.reduce((_, id) => {
+        if (this.getById[id] && this.getById[id].opened) {
+          return [..._, this.getById[id]]
+        }
+
+        return _
+      }, [])
+      // return this.getAllIds.reduce((_, id) => {
+        
+      //   if (this.getById[id].value?.opened) {
+      //     _.push(this.getById[id].value)
+
+      //     return _
+      //   }
+      // }, [])
+    }
   }
 })
