@@ -30,7 +30,9 @@ export const useBroTermStore = defineStore('broTerm', {
       if (!taskData) {
         this.runSubtask({
           name: SUBTASKS_NAMES.WRITE,
-          payload: `Command is \'${lowerTaskName}\' not supported`
+          payload: {
+            text: `Command is \'${lowerTaskName}\' not supported`
+          }
         })
         return;
       }

@@ -11,8 +11,8 @@ export enum PagesNames {
 
 export enum WindowPages {
   terminal = PagesNames.terminal,
-  // cv = PagesNames.cv,
-  about = PagesNames.about,
-  // settings = PagesNames.settings,
+  cv = PagesNames.cv,
+  // about = PagesNames.about,
+  settings = PagesNames.settings,
   // contact = PagesNames.contact,
 }

@@ -1,7 +1,7 @@
 <template>
   <li>
     <button
-      class="h-full px-8 py-4 border-4 border-solid transition"
+      class="h-full px-8 py-4 border-4 border-solid bg-neutral-50 transition"
       :class="{
         'border-t-gray-400 border-l-gray-400 border-r-gray-600 border-b-gray-600': props.modal.minimized,
         'border-b-gray-400 border-r-gray-400 border-l-gray-600 border-t-gray-600': !props.modal.minimized,

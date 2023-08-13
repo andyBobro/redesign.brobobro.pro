@@ -1,6 +1,6 @@
 <template>
   <div ref="outputLine">
-    {{parseLine(line)[0].content}}
+    {{ parseLine(props.line).content }}
   </div>  
 </template>
 
@@ -10,7 +10,7 @@
 
   const outputLine = ref()
 
-  const {line} = defineProps({
+  const props = defineProps({
     line: {
       required: true,
     }
@@ -21,11 +21,9 @@
   function parseLine (rawLine) {
     switch (rawLine.name) {
       case SUBTASKS_NAMES.WRITE:
-        return [
-          {
-            content: rawLine.payload
-          }
-        ]
+        return {
+          content: rawLine.payload.text
+        }
     
       default:
         break;

@@ -1,61 +1,71 @@
 <template>
-  <DesktopUI>
-    <template #topBar>
-      <DesktopTopBar />
-    </template>
-    <template #links>
-      <DesktopLink
-        :to="{
-          name: 'desktop-win',
-          params: {
-            win: PagesNames.terminal
-          }
-        }"
-      >
-        {{ PagesNames.terminal }}
-      </DesktopLink>
-    </template>
-    <template #default>
-      <slot />
-    </template>
-    <template #modals>
-      <keep-alive>
-        <component
-          :is="window"
-          v-for="(window, w) in windows"
-          :key="w"
-        />
-      </keep-alive>
-    </template>
-    <template #bottomBar>
-      <DesktopBottomBar />
-    </template>
-  </DesktopUI>
+  <transition name="turn">
+    <DesktopUI
+      v-if="mounted"
+      key="UI"
+    >
+      <template #topBar>
+        <DesktopTopBar />
+      </template>
+      <template #links>
+        <DesktopLink
+          :to="{
+            name: 'desktop-win',
+            params: {
+              win: PagesNames.terminal
+            }
+          }"
+        >
+          {{ PagesNames.terminal }}
+        </DesktopLink>
+        <DesktopLink
+          :to="{
+            name: 'desktop-win',
+            params: {
+              win: PagesNames.settings
+            }
+          }"
+        >
+          {{ PagesNames.settings }}
+        </DesktopLink>
+
+        <DesktopLink
+          :to="{
+            name: 'desktop-win',
+            params: {
+              win: PagesNames.cv
+            }
+          }"
+        >
+          {{ PagesNames.cv }}
+        </DesktopLink>
+      </template>
+      <template #default>
+        <slot />
+      </template>
+      <template #bottomBar>
+        <DesktopBottomBar />
+      </template>
+    </DesktopUI>
+  </transition>
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from 'vue'
+import { ref, onMounted } from 'vue'
 import DesktopUI from '@/components/desktopUI/DesktopUI/index.vue';
 import DesktopTopBar from '@/components/desktopUI/DesktopTopBar/index.vue';
 import DesktopBottomBar from '@/components/desktopUI/DesktopBottomBar/index.vue';
 import DesktopLink from '@/components/desktopUI/DesktopLink/index.vue';
-import { PagesNames, WindowPages } from '@/enums/pagesNames'
-import { camelCase, startCase } from 'lodash';
+import { PagesNames } from '@/enums/pagesNames'
+import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import { remove } from 'lodash';
 
-const windows = computed(() => {
-  const route = useRoute()
-  const winParam = route.params.win as WindowPages
-  const winArr = winParam?.split(',')
-  
-  if (!winArr) return []
+const modalStore = useWindowModalsStore()
+const route = useRoute()
 
-  return winArr.reduce((_, win) => {
-    if (Object.values(WindowPages).includes(win as WindowPages)) {
-      const modal = startCase(camelCase(win)).replace(/ /g, '');
-      _.push(defineAsyncComponent(() => import(`../modals/${modal}/index.vue`)))
+const mounted = ref(false)
 
-      return _
-    }
-  }, [])
+onMounted(() => {
+  mounted.value = true
 })
 </script>

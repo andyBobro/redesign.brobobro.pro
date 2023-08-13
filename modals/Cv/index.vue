@@ -1,6 +1,6 @@
 <template>
-  <WindowModal :type="WindowPages.settings">
-    <h1>Settings</h1>
+  <WindowModal :type="WindowPages.cv">
+    <h1>cv</h1>
   </WindowModal>
 </template>
 

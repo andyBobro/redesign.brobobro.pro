@@ -39,7 +39,7 @@ async function onRunCmd(e) {
 watch(store.history, (nH, oH) => {
   const el = termOutput.value.el
   const scrollVal = [...el.children].reduce((_, e) => _ + e.offsetHeight, 0)
-  console.log(el, scrollVal);
+
   el && (el.scrollTo({
     top: scrollVal
   }))

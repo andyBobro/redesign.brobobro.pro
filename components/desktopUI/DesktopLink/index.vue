@@ -1,6 +1,5 @@
 <template>
-  <component
-    :is="linkComponent"
+  <AppLink
     class="inline-flex flex-col items-center"
     v-bind="{...$props}"
   >
@@ -8,29 +7,9 @@
     <div>
       <slot />
     </div>
-  </component>
+  </AppLink>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-
-interface Props {
-  to?: any,
-  href?: string | void,
-  icon?: string,
-}
-
-const {
-  to,
-  href,
-  icon,
-} = defineProps<Props>()
-
-const linkComponent = computed(() => {
-  if (to || href) {
-    return  defineNuxtLink({})
-  }
-
-  return 'button'
-})
+import AppLink from '@/components/shared/AppLink/index.vue'
 </script>

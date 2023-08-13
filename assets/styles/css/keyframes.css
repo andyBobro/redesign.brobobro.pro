@@ -253,3 +253,18 @@ background: rgba(18, 16, 16, 0.1); */
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
 }
+
+.turn-enter-active {
+  animation: turn-on 3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.turn-leave-active {
+  animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.modal-enter-active {
+  animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1) reverse;
+}
+.modal-leave-active {
+  animation: turn-off 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+}
+

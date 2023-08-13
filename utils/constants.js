@@ -44,15 +44,21 @@ export const TASKS = {
     subtasks: [
       {
         name: SUBTASKS_NAMES.WRITE,
-        payload: 'Welcome'
+        payload: {
+          text: 'Welcome'
+        }
       },
       {
         name: SUBTASKS_NAMES.WRITE,
-        payload: 'You\'re using BroTerm'
+        payload: {
+          text: 'You\'re using BroTerm'
+        }
       },
       {
         name: SUBTASKS_NAMES.WRITE,
-        payload: 'for list of supported commands type \'help\''
+        payload: {
+          text: 'for list of supported commands type \'help\''
+        }
       },
     ]
   },
@@ -63,7 +69,9 @@ export const TASKS = {
     subtasks: Object.values(TASKS_NAMES).map((task) => {
       return {
         name: SUBTASKS_NAMES.WRITE,
-        payload: `tasks.help.${task}`
+        payload: {
+          text: `tasks.help.${task}`
+        }
       }
     })
   }

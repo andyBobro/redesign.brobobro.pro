@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex p-4 md:p-8 text-large bg-neutral-50 text-gray-950">
+  <div class="absolute bottom-0 w-full left-0 flex p-4 md:p-8 text-large text-gray-950">
     <DesktopBarTaskPanel />
   </div>
 </template>
