@@ -23,10 +23,15 @@ export function appsStringDiff (s1, s2) {
 
 export function removeAppFromAppsString(appStr, strToRemove) {
   const appsSet = new Set(appStr.split(','))
+
+  console.log('appsSet', appsSet);
   let result = ''
   
   appsSet.delete(strToRemove)
+
+  console.log('[...appsSet]', [...appsSet]);
   
   result = [...appsSet].join(',');
-  return result.size ? result : null
+  console.log('result', result);
+  return result.length ? result : null
 }

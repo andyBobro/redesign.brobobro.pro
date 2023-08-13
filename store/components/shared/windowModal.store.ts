@@ -13,13 +13,14 @@ enum WindowStateParams {
 }
 
 interface WindowModalStore {
+  active: WindowPages,
   allIds: Array<WindowPages>,
   byId: Record<WindowPages, Record<WindowStateParams, boolean>>
 }
 
 export interface WindowModalState {
   name?: string,
-  active?: boolean,
+  inited: boolean | null,
   opened?: boolean,
   fullscreen?: boolean,
   minimized?: boolean,
@@ -28,7 +29,7 @@ export interface WindowModalState {
 }
 
 const initialWindowModalState :WindowModalState = {
-  active: false,
+  inited: false,
   opened: false,
   fullscreen: true,
   minimized: false,
@@ -38,6 +39,7 @@ const initialWindowModalState :WindowModalState = {
 
 export const useWindowModalsStore = defineStore('windowModals', {
   state: () => ({
+    active: null,
     byId: {},
     allIds: Object.values(WindowPages),
   } as WindowModalStore),
@@ -49,11 +51,23 @@ export const useWindowModalsStore = defineStore('windowModals', {
       }
     },
     async initModalState(type :WindowPages) :Promise<void> {
-      await this.setModalState(type, { 
-        ...initialWindowModalState,
-        name: type,
-        opened: true,
-      })
+      if (this.getById[type]?.inited) {
+        await this.setModalState(type, { 
+          opened: true,
+        })
+      } else {
+        await this.setModalState(type, { 
+          ...initialWindowModalState,
+          name: type,
+          opened: true,
+          inited: true,
+        })
+      }
+      
+      await this.setActive(type)
+    },
+    setActive (type :WindowPages) {
+      this.active = type
     },
   },
   getters: {
@@ -84,6 +98,13 @@ export const useWindowModalsStore = defineStore('windowModals', {
       //     return _
       //   }
       // }, [])
+    },
+    isActive () {
+      return (type) => {
+        console.log(this.active === type);
+        
+        return this.active === type
+      }
     }
   }
 })

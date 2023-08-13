@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import DesktopBarTaskPanelItem from './DesktopBarTaskPanelItem.vue'
 import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
 

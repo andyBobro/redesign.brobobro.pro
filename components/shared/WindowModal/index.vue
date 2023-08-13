@@ -10,7 +10,9 @@
         'absolute w-full top-0 bottom-56': pageStore.isOnlyTouchDevice,
         'static': false && minimized && opened,
         'min-w-[480px] min-h-[240px]': opened && !minimized  && !pageStore.isOnlyTouchDevice,
+        'z-40': isActive
       }"
+      @click="setActive"
     >
       <div
         class="flex items-center justify-between bg-neutral-50 text-gray-950 p-4"
@@ -83,7 +85,10 @@ const minimized = computed(() => {
 })
 
 const { x, y, isDragging } = useDraggable(el, {
-  initialValue: { x: 100, y: 100 },
+  initialValue: {
+    x: modalStore.getById?.[props.type]?.x || 100, 
+    y: modalStore.getById?.[props.type]?.y || 100 
+  },
 })
 
 watchEffect(() => {
@@ -100,6 +105,12 @@ const style :ComputedRef<string | boolean> = computed(() => {
     left: ${x.value}px;
     top: ${y.value}px;
   ` : ''
+})
+
+const isActive = computed(() => {
+  console.log(modalStore.isActive(props.type));
+  
+  return modalStore.isActive(props.type)
 })
 
 async function onControlAction(controlActionType: WindowControlTypes): void {
@@ -138,6 +149,10 @@ async function onControlAction(controlActionType: WindowControlTypes): void {
     default:
       break;
   }
+}
+
+function setActive(type: WindowPages) {
+  modalStore.setActive(props.type)
 }
 
 function maximizeWindow () {
