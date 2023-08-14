@@ -14,5 +14,3 @@ import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAp
 
 const store = useDesktopAppModalsStore()
 </script>
-store/components/desktopUI/desktopAppModal.store
-store/components/desktopUI/desktopAppModal.store

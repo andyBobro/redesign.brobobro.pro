@@ -35,5 +35,3 @@ async function toggleMin() :void {
   })
 }
 </script>
-store/components/desktopUI/desktopAppModal.storestore/components/desktopUI/desktopAppModal.store
-store/components/desktopUI/desktopAppModal.storestore/components/desktopUI/desktopAppModal.store

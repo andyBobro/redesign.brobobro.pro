@@ -84,5 +84,4 @@ function appHandler () {
     })
   }
 }
-</script>ponents/desktopUI/appModal.store
-store/components/desktopUI/desktopAppModal.store
+</script>
