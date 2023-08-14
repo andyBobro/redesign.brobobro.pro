@@ -15,12 +15,13 @@
 <script setup>
 import { ref, defineExpose } from 'vue'
 import Line from './Line.vue'
-import { useBroTermStore } from '@/store/components/shared/broTerm.store'
+import { useDesktopTerminalStore } from '@/store/components/desktopUI/desktopTerminal.store'
 
 const output = ref(null)
-const store = useBroTermStore() 
+const store = useDesktopTerminalStore() 
 
 defineExpose({
   el: output
 })
 </script>
+store/components/desktopUI/desktopTerminal.store

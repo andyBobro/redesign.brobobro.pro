@@ -31,7 +31,7 @@
           v-if="!minimized"
           class="flex"
         >
-          <WindowModalControl
+          <DesktopAppModalControl
             v-for="control in controls"
             :key="control"
             :type="control"
@@ -51,8 +51,8 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import WindowModalControl from './WindowModalControl.vue'
-import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import DesktopAppModalControl from './DesktopAppModalControl.vue'
+import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
 import { useDraggable } from '@vueuse/core'
 import { removeAppFromAppsString } from '@/utils/desktopUI/apps'
 import { WindowPages } from '@/enums/pagesNames'
@@ -71,7 +71,7 @@ type WindowPage = WindowPages.terminal | WindowPages.about
 const route = useRoute()
 const router = useRouter()
 const props = defineProps<Props>()
-const modalStore = useWindowModalsStore()
+const modalStore = useDesktopAppModalsStore()
 const pageStore = usePageStore()
 const controls: Array<WindowControlTypes> = Object.values(WindowControlTypes)
 const el = ref<HTMLElement | null>(null)
@@ -116,13 +116,13 @@ const isActive = computed(() => {
 async function onControlAction(controlActionType: WindowControlTypes): void {
   switch (controlActionType) {
     case WindowControlTypes.Close:
-      const newApps = removeAppFromAppsString(route.params.win, props.type)
+      const newApps = removeAppFromAppsString(route.params.app, props.type)
       console.log('newApps', newApps);
       
       const newRoute = newApps ? {
           name: route.name,
           params: {
-            win: newApps 
+            app: newApps 
           }
         } : {
           name: 'desktop',
@@ -167,3 +167,4 @@ onMounted(() => {
   modalStore.initModalState(props.type)
 })
 </script>
+store/components/desktopUI/desktopAppModal.store

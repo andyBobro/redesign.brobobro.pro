@@ -1,7 +1,7 @@
 <template>
-  <WindowModal :type="WindowPages.terminal">
-    <BroTerm />
-  </WindowModal>
+  <DesktopAppModal :type="WindowPages.terminal">
+    <DesktopTerminal />
+  </DesktopAppModal>
 </template>
 
 <script>
@@ -12,15 +12,15 @@ export default {
 
 <script setup>
 import { watchEffect } from 'vue'
-import WindowModal from '@/components/shared/WindowModal/index.vue'
-import BroTerm from '@/components/shared/BroTerm/index.vue'
+import AppModal from '@/components/desktopUI/DesktopAppModal/index.vue'
+import DesktopTerminal from '@/components/desktopUI/DesktopTerminal/index.vue'
 import { WindowPages } from '@/enums/pagesNames'
-import { useBroTermStore } from '@/store/components/shared/broTerm.store'
-import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import { useDesktopTerminalStore } from '@/store/components/desktopUI/desktopTerminal.store'
+import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
 
 
-const termStore = useBroTermStore()
-const modalStore = useWindowModalsStore()
+const termStore = useDesktopTerminalStore()
+const modalStore = useDesktopAppModalsStore()
 
 watchEffect(() => {
   if (modalStore.isActive(WindowPages.terminal)) {
@@ -28,3 +28,4 @@ watchEffect(() => {
   }
 })
 </script>
+store/components/desktopUI/desktopTerminal.store

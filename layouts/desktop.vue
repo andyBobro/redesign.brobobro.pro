@@ -8,37 +8,37 @@
         <DesktopTopBar />
       </template>
       <template #links>
-        <DesktopLink
+        <DesktopShortcut
           :to="{
-            name: 'desktop-win',
+            name: 'desktop-app',
             params: {
-              win: PagesNames.terminal
+              app: PagesNames.terminal
             }
           }"
         >
           {{ PagesNames.terminal }}
-        </DesktopLink>
-        <DesktopLink
+        </DesktopShortcut>
+        <DesktopShortcut
           :to="{
-            name: 'desktop-win',
+            name: 'desktop-app',
             params: {
-              win: PagesNames.settings
+              app: PagesNames.settings
             }
           }"
         >
           {{ PagesNames.settings }}
-        </DesktopLink>
+        </DesktopShortcut>
 
-        <DesktopLink
+        <DesktopShortcut
           :to="{
-            name: 'desktop-win',
+            name: 'desktop-app',
             params: {
-              win: PagesNames.cv
+              app: PagesNames.cv
             }
           }"
         >
           {{ PagesNames.cv }}
-        </DesktopLink>
+        </DesktopShortcut>
       </template>
       <template #default>
         <slot />
@@ -55,12 +55,12 @@ import { ref, onMounted } from 'vue'
 import DesktopUI from '@/components/desktopUI/DesktopUI/index.vue';
 import DesktopTopBar from '@/components/desktopUI/DesktopTopBar/index.vue';
 import DesktopBottomBar from '@/components/desktopUI/DesktopBottomBar/index.vue';
-import DesktopLink from '@/components/desktopUI/DesktopLink/index.vue';
+import DesktopLink from '@/components/desktopUI/DesktopShortcut/index.vue';
 import { PagesNames } from '@/enums/pagesNames'
-import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
 import { remove } from 'lodash';
 
-const modalStore = useWindowModalsStore()
+const modalStore = useDesktopAppModalsStore()
 const route = useRoute()
 
 const mounted = ref(false)

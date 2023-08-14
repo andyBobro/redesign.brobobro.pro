@@ -20,10 +20,10 @@ import { useElementSize } from '@vueuse/core'
 import { STORAGE_NAME } from '@/utils/constants'
 import Output from './Output.vue'
 import Input from './Input.vue'
-import { useBroTermStore } from '@/store/components/shared/broTerm.store'
+import { useDesktopTerminalStore } from '@/store/components/desktopUI/desktopTerminal.store'
 import { delay, TASKS, TASKS_NAMES } from '@/utils/constants'
 import { setMapStoreSuffix } from 'pinia'
-const store = useBroTermStore()
+const store = useDesktopTerminalStore()
 
 const termWrap = ref(null)
 const termOutput = ref(null)
@@ -50,3 +50,4 @@ onMounted(() => {
   store.setWelcomeShown()
 })
 </script>
+store/components/desktopUI/desktopTerminal.store

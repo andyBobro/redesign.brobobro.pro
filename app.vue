@@ -21,7 +21,7 @@ const pageStore = usePageStore()
 
 const layoutsMap = {
   desktop: 'desktop',
-  'desktop-win': 'desktop',
+  'desktop-app': 'desktop',
 }
 
 const layoutName = computed(() => {

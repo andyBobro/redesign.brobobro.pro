@@ -44,10 +44,10 @@
 </template>
 
 <script setup>
-import { useBroTermStore } from '@/store/components/shared/broTerm.store'
+import { useDesktopTerminalStore } from '@/store/components/desktopUI/desktopTerminal.store'
 import { computed, onMounted } from 'vue'
 
-const termStore = useBroTermStore()
+const termStore = useDesktopTerminalStore()
 const realInput = ref(null)
 const rawCmd = ref('')
 const realInputData = reactive({
@@ -164,3 +164,4 @@ pre {
   font-family: "VT323" !important;
 }
 </style>
+store/components/desktopUI/desktopTerminal.store

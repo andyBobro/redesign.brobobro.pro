@@ -13,25 +13,25 @@
 <script setup lang="ts">
 import { onMounted, nextTick, defineAsyncComponent } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router'
-import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
 import { PagesNames, WindowPages } from '@/enums/pagesNames'
 import { camelCase, startCase } from 'lodash';
 import { appsStringDiff } from '@/utils/desktopUI/apps'
 
 const route = useRoute()
-const modalStore = useWindowModalsStore()
+const modalStore = useDesktopAppModalsStore()
 
 const windows = computed(() => {
-  const winParam = route.params.win as WindowPages;
+  const winParam = route.params.app as WindowPages;
   const winArr = winParam?.split(',')
 
   if (!winArr) {
     return []
   }
 
-  return winArr.reduce((_, win) => {
-    if (Object.values(WindowPages).includes(win as WindowPages)) {
-      const modal = startCase(camelCase(win)).replace(/ /g, '');
+  return winArr.reduce((_, app) => {
+    if (Object.values(WindowPages).includes(app as WindowPages)) {
+      const modal = startCase(camelCase(app)).replace(/ /g, '');
       _.push(defineAsyncComponent(() => import(`../../modals/${modal}/index.vue`)))
 
       return _
@@ -41,7 +41,7 @@ const windows = computed(() => {
 
 // onMounted(() => {
 //   nextTick(() => {
-//     const apps = route.params.win.split(',')
+//     const apps = route.params.app.split(',')
 //     console.log(apps);
 
 //     apps.forEach((app) => {
@@ -59,7 +59,7 @@ const windows = computed(() => {
 onBeforeRouteLeave((to, from, next) => {
   console.log('onBeforeRouteLeave');
   
-  const { added, removed } = appsStringDiff(from.params.win, to.params.win)
+  const { added, removed } = appsStringDiff(from.params.app, to.params.app)
 
   console.log(to, from, added, removed);
 
