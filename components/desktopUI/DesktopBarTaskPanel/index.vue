@@ -10,7 +10,9 @@
 
 <script setup lang="ts">
 import DesktopBarTaskPanelItem from './DesktopBarTaskPanelItem.vue'
-import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
 
-const store = useWindowModalsStore()
+const store = useDesktopAppModalsStore()
 </script>
+store/components/desktopUI/desktopAppModal.store
+store/components/desktopUI/desktopAppModal.store

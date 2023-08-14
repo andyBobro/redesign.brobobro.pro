@@ -14,15 +14,15 @@
 </template>
 
 <script setup lang="ts">
-import type { WindowModalState } from '@/store/components/shared/windowModal.store'
-import { useWindowModalsStore } from '@/store/components/shared/windowModal.store'
+import type { AppModalState } from '@/store/components/desktopUI/desktopAppModal.store'
+import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
 
 interface Props {
-  modal: WindowModalState
+  modal: AppModalState
 }
 
 const props = defineProps<Props>()
-const store = useWindowModalsStore()
+const store = useDesktopAppModalsStore()
 
 async function toggleMin() :void {
   if (!props.modal.minimized) {
@@ -35,3 +35,5 @@ async function toggleMin() :void {
   })
 }
 </script>
+store/components/desktopUI/desktopAppModal.storestore/components/desktopUI/desktopAppModal.store
+store/components/desktopUI/desktopAppModal.storestore/components/desktopUI/desktopAppModal.store
