@@ -50,4 +50,3 @@ onMounted(() => {
   store.setWelcomeShown()
 })
 </script>
-store/components/desktopUI/desktopTerminal.store

@@ -24,4 +24,3 @@ defineExpose({
   el: output
 })
 </script>
-store/components/desktopUI/desktopTerminal.store

@@ -28,4 +28,3 @@ watchEffect(() => {
   }
 })
 </script>
-store/components/desktopUI/desktopTerminal.store
