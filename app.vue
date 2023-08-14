@@ -1,27 +1,34 @@
 <template>
-  <div ref="appWrapper" class="flex w-full flex-shrink-0 flex-grow flex-col transition-all">
-    <NuxtLayout :name="width > 1200 ? 'default' : 'web'">
+  <div
+    ref="appWrapper"
+    class="flex w-full flex-shrink-0 flex-grow flex-col transition-all"
+    :class="{
+      'touch-only': pageStore.isOnlyTouchDevice
+    }"
+  >
+    <NuxtLayout :name="layoutName">
       <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
 
-<script setup>
-import { computed, onMounted } from 'vue'
-import { useWindowSize } from '@vueuse/core'
-import flicker from '@/utils/keyframes/flicker'
-const { $anime } = useNuxtApp()
-const appWrapper = ref(null)
+<script lang="ts" setup>
+import { computed, onBeforeMount } from 'vue';
+import { usePageStore } from '@/store/page.store'
 
-const { width } = useWindowSize()
+const route = useRoute()
+const pageStore = usePageStore()
 
-onMounted(async () => {
-  // $anime({
-  //   targets: appWrapper.value,
-  //   duration: 250,
-  //   loop: true,
-  //   keyframes: flicker,
-  //   easing: 'linear',
-  // })
+const layoutsMap = {
+  desktop: 'desktop',
+  'desktop-win': 'desktop',
+}
+
+const layoutName = computed(() => {
+  if (layoutsMap[route.name]) {
+    return layoutsMap[route.name]
+  }
+
+  return 'default'
 })
 </script>

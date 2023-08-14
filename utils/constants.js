@@ -6,12 +6,14 @@ export const STORAGE_DEFAULTS = {
 }
 export const TASKS_NAMES = {
   GO: 'go',
-  VIEW: 'view',
+  CAT: 'cat',
+  RUN: 'run',
   HELP: 'help',
   WELCOME: 'welcome',
 }
 export const SUBTASKS_NAMES = {
   WRITE: 'WRITE',
+  DRAW_TABLE: 'DRAW_TABLE',
 }
 export const TASKS_TYPES = {
   STATIC: 'STATIC',
@@ -28,6 +30,10 @@ export const SUBTASKS = {
     name: SUBTASKS_NAMES.WRITE,
     type: TASKS_TYPES.STATIC,
     exec_type: EXEC_TYPES.IMMEDIATE,
+  },
+  [SUBTASKS_NAMES.DRAW_TABLE]: {
+    name: SUBTASKS_NAMES.DRAW_TABLE,
+    type: TASKS_TYPES.STATIC,
   }
 }
 
@@ -39,15 +45,21 @@ export const TASKS = {
     subtasks: [
       {
         name: SUBTASKS_NAMES.WRITE,
-        payload: 'Welcome'
+        payload: {
+          text: 'Welcome'
+        }
       },
       {
         name: SUBTASKS_NAMES.WRITE,
-        payload: 'You\'re using BroTerm'
+        payload: {
+          text: 'You\'re using BroTerm'
+        }
       },
       {
         name: SUBTASKS_NAMES.WRITE,
-        payload: 'for list of supported commands type \'help\''
+        payload: {
+          text: 'for list of supported commands type \'help\''
+        }
       },
     ]
   },
@@ -58,7 +70,9 @@ export const TASKS = {
     subtasks: Object.values(TASKS_NAMES).map((task) => {
       return {
         name: SUBTASKS_NAMES.WRITE,
-        payload: `tasks.help.${task}`
+        payload: {
+          text: `tasks.help.${task}`
+        }
       }
     })
   }

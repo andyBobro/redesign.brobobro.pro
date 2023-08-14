@@ -1,5 +1,8 @@
 <template>
-  <div class="flex border-t-2 border-dotted pt-8" @click="onCaretClick">
+  <div
+    class="h-40 items-center flex border-t-2 border-dotted py-8 cursor-text"
+    @click="onCaretClick"
+  >
     <div :class="['mr-4', {}]">
       {{ prefix }}
     </div>
@@ -15,26 +18,36 @@
       autofocus="autofocus"
       @input="onRealInputInput"
       @keypress="onRealInputKeypress"
-      @keyup="onReanInputKeyup"
+      @keyup="onRealInputKeyup"
       @change="onRealInputChange"
+    >
+
+    <pre
+      class="font-mono"
+      ref="displayedOutputBefore"
+      v-html="displayedCmd.before"
     />
 
-    <span ref="displayedOutputBefore" v-html="displayedCmd.before" />
-
-    <span
+    <pre
       ref="displayedOutputCaret"
-      class="caret h-full min-w-[2px] cursor-text bg-white text-black"
+      class="caret h-full min-w-[2px] min-h-[32px] bg-white text-black"
       @click="onCaretClick"
       v-html="displayedCmd.inner"
-    >
-    </span>
+    />
 
-    <span ref="displayedOutputAfter" v-html="displayedCmd.after"></span>
+    <pre
+      class="font-mono"
+      ref="displayedOutputAfter"
+      v-html="displayedCmd.after"
+    />
   </div>
 </template>
 
 <script setup>
+import { useBroTermStore } from '@/store/components/shared/broTerm.store'
 import { computed, onMounted } from 'vue'
+
+const termStore = useBroTermStore()
 const realInput = ref(null)
 const rawCmd = ref('')
 const realInputData = reactive({
@@ -83,7 +96,7 @@ function onRealInputKeypress(e) {
   setInputData()
 }
 
-function onReanInputKeyup(e) {
+function onRealInputKeyup(e) {
   setInputData()
 }
 
@@ -135,6 +148,7 @@ function setInputData() {
 onMounted(() => {
   focusInput()
   setInputData()
+  termStore.setEl('realInput', realInput.value)
 })
 </script>
 
@@ -144,5 +158,9 @@ onMounted(() => {
 }
 .caret {
   animation: cursor 0.42s linear infinite;
+}
+
+pre {
+  font-family: "VT323" !important;
 }
 </style>

@@ -1,27 +1,29 @@
 <template>
-  <div>
-    {{parseLine(line)[0].content}}
+  <div ref="outputLine">
+    {{ parseLine(props.line).content }}
   </div>  
 </template>
 
 <script setup>
-  import {defineProps} from 'vue';
+  
   import { SUBTASKS_NAMES } from '@/utils/constants'
 
-  const {line} = defineProps({
+  const outputLine = ref()
+
+  const props = defineProps({
     line: {
       required: true,
     }
   })
 
+  
+
   function parseLine (rawLine) {
     switch (rawLine.name) {
       case SUBTASKS_NAMES.WRITE:
-        return [
-          {
-            content: rawLine.payload
-          }
-        ]
+        return {
+          content: rawLine.payload.text
+        }
     
       default:
         break;

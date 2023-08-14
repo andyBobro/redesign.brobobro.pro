@@ -6,7 +6,8 @@ export default <Config>{
     'app.vue'
     // Add all files that contain Tailwind classes
     // e.g. './modules/**/*.{vue,js,ts}',
-  ], theme: {
+  ], 
+  theme: {
     screens: {
       null: {
         min: '0px',
@@ -137,7 +138,8 @@ export default <Config>{
         },
       ],
     },
-    extend: {},
+    extend: {
+    },
   },
   plugins: [],
 }

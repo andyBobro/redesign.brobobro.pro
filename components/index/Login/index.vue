@@ -1,5 +1,5 @@
 <template>
-  <div class="border-2 border-dotted border-white p-4">
+  <div class="">
     <div
       class="flex flex-col items-center justify-center border-4 border-solid border-white p-64 text-center text-heading-5 text-white"
     >
@@ -15,30 +15,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'PressToStart',
-  // methods: {
-  //   onStart() {
-  //     this.$emit('foo', {
-  //       started: true,
-  //     })
-  //   },
-  // },
-  emits: ['start'],
-  setup(props, context) {
-    const onStart = () => {
-      const v = {
-        started: true,
-      }
+<script setup>
 
-      console.log(context, v)
+const emit = defineEmits(['start'])
 
-      context.emit('start', v)
-    }
-    return {
-      onStart,
-    }
-  },
+function onStart() {
+  emit('start')
 }
+
 </script>

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { delay, TASKS, SUBTASKS } from '@/utils/constants'
+import { delay, TASKS } from '@/utils/constants'
 
 export const useBroTermStore = defineStore('broTerm', {
   // arrow function recommended for full type inference
@@ -8,6 +8,10 @@ export const useBroTermStore = defineStore('broTerm', {
       // all these properties will have their type inferred automatically
       history: [],
       isRunning: false,
+      welcomeShown: false,
+      elements: {
+        realInput: null,
+      }
     }
   },
   actions: {
@@ -15,7 +19,7 @@ export const useBroTermStore = defineStore('broTerm', {
     // TODO HANDLE COMPLETE PROCESSING TASK SUBTASK 
 
     processInput(input) {
-      const { rawInput, tasks } = input
+      const { tasks } = input
 
       tasks.forEach(async (task) => {
         await this.runTask(task)
@@ -26,19 +30,17 @@ export const useBroTermStore = defineStore('broTerm', {
       const lowerTaskName = taskName.toLowerCase()
       const taskData = TASKS[lowerTaskName]
 
-      console.log(taskData);
-
       if (!taskData) {
         this.runSubtask({
           name: SUBTASKS_NAMES.WRITE,
-          payload: `Command is \'${lowerTaskName}\' not supported`
+          payload: {
+            text: `Command is \'${lowerTaskName}\' not supported`
+          }
         })
         return;
       }
 
       const { subtasks } = taskData
-
-      console.log(subtasks);
 
       subtasks.forEach(async (subtask) => {
         await delay()
@@ -50,9 +52,16 @@ export const useBroTermStore = defineStore('broTerm', {
         this.history.push(subtask)
       })
     },
-
+    setWelcomeShown () {
+      this.welcomeShown = true
+    },
+    setEl (elName, el) {
+      this.elements[elName] = el
+    },
+    focusInput() {
+      this.elements.realInput?.focus()
+    },
   },
   getters: {
-
   }
 })
