@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { delay, TASKS } from '@/utils/constants'
 
-export const useBroTermStore = defineStore('broTerm', {
+export const useDesktopTerminalStore = defineStore('desktopTerminal', {
   // arrow function recommended for full type inference
   state: () => {
     return {

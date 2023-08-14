@@ -52,7 +52,7 @@ export const TASKS = {
       {
         name: SUBTASKS_NAMES.WRITE,
         payload: {
-          text: 'You\'re using BroTerm'
+          text: 'You\'re using DesktopTerminal'
         }
       },
       {
