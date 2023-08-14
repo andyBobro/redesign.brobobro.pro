@@ -81,5 +81,3 @@ onBeforeRouteLeave((to, from, next) => {
   return false
 })
 </script>
-store/components/desktopUI/desktopAppModal.store
-store/components/desktopUI/desktopAppModal.store

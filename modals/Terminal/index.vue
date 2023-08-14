@@ -28,5 +28,3 @@ watchEffect(() => {
   }
 })
 </script>
-store/components/desktopUI/desktopAppModal.store
-store/components/desktopUI/desktopAppModal.store
