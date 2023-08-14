@@ -164,4 +164,3 @@ pre {
   font-family: "VT323" !important;
 }
 </style>
-store/components/desktopUI/desktopTerminal.store
