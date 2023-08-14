@@ -90,19 +90,9 @@ export const useWindowModalsStore = defineStore('windowModals', {
 
         return _
       }, [])
-      // return this.getAllIds.reduce((_, id) => {
-        
-      //   if (this.getById[id].value?.opened) {
-      //     _.push(this.getById[id].value)
-
-      //     return _
-      //   }
-      // }, [])
     },
     isActive () {
       return (type) => {
-        console.log(this.active === type);
-        
         return this.active === type
       }
     }

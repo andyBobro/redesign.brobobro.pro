@@ -6,7 +6,8 @@ export const STORAGE_DEFAULTS = {
 }
 export const TASKS_NAMES = {
   GO: 'go',
-  VIEW: 'view',
+  CAT: 'cat',
+  RUN: 'run',
   HELP: 'help',
   WELCOME: 'welcome',
 }

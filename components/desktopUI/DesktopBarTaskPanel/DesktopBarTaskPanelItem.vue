@@ -25,10 +25,11 @@ const props = defineProps<Props>()
 const store = useWindowModalsStore()
 
 async function toggleMin() :void {
-  if (props.modal.minimized) {
-    await store.setActive(props.modal.name)
+  if (!props.modal.minimized) {
+    return await store.setActive(props.modal.name)
   }
-  
+
+  await store.setActive(props.modal.name)
   await store.setModalState(props.modal.name, {
     minimized: !props.modal.minimized
   })

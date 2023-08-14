@@ -18,7 +18,7 @@
       autofocus="autofocus"
       @input="onRealInputInput"
       @keypress="onRealInputKeypress"
-      @keyup="onReanInputKeyup"
+      @keyup="onRealInputKeyup"
       @change="onRealInputChange"
     >
 
@@ -44,7 +44,10 @@
 </template>
 
 <script setup>
+import { useBroTermStore } from '@/store/components/shared/broTerm.store'
 import { computed, onMounted } from 'vue'
+
+const termStore = useBroTermStore()
 const realInput = ref(null)
 const rawCmd = ref('')
 const realInputData = reactive({
@@ -93,7 +96,7 @@ function onRealInputKeypress(e) {
   setInputData()
 }
 
-function onReanInputKeyup(e) {
+function onRealInputKeyup(e) {
   setInputData()
 }
 
@@ -145,6 +148,7 @@ function setInputData() {
 onMounted(() => {
   focusInput()
   setInputData()
+  termStore.setEl('realInput', realInput.value)
 })
 </script>
 

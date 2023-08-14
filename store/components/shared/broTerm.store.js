@@ -9,6 +9,9 @@ export const useBroTermStore = defineStore('broTerm', {
       history: [],
       isRunning: false,
       welcomeShown: false,
+      elements: {
+        realInput: null,
+      }
     }
   },
   actions: {
@@ -51,7 +54,13 @@ export const useBroTermStore = defineStore('broTerm', {
     },
     setWelcomeShown () {
       this.welcomeShown = true
-    }
+    },
+    setEl (elName, el) {
+      this.elements[elName] = el
+    },
+    focusInput() {
+      this.elements.realInput?.focus()
+    },
   },
   getters: {
   }
