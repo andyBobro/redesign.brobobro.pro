@@ -15,14 +15,11 @@
 </template>
 
 <script setup>
-import { computed, onMounted, watchEffect } from 'vue'
-import { useElementSize } from '@vueuse/core'
-import { STORAGE_NAME } from '@/utils/constants'
+import { onMounted } from 'vue'
 import Output from './Output.vue'
 import Input from './Input.vue'
 import { useDesktopTerminalStore } from '@/store/components/desktopUI/desktopTerminal.store'
-import { delay, TASKS, TASKS_NAMES } from '@/utils/constants'
-import { setMapStoreSuffix } from 'pinia'
+import { TASKS_NAMES } from '@/utils/constants'
 const store = useDesktopTerminalStore()
 
 const termWrap = ref(null)

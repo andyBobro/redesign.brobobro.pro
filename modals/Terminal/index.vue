@@ -12,7 +12,7 @@ export default {
 
 <script setup>
 import { watchEffect } from 'vue'
-import AppModal from '@/components/desktopUI/DesktopAppModal/index.vue'
+import DesktopAppModal from '@/components/desktopUI/DesktopAppModal/index.vue'
 import DesktopTerminal from '@/components/desktopUI/DesktopTerminal/index.vue'
 import { WindowPages } from '@/enums/pagesNames'
 import { useDesktopTerminalStore } from '@/store/components/desktopUI/desktopTerminal.store'

@@ -105,7 +105,7 @@ function onRealInputChange(e) {
 }
 
 function onRealInputInput(e) {
-  if (e.key === ' ') rawCmd.value += '&nbsp;&nbsp;&nbsp;'
+  if (e.key === ' ') rawCmd.value += '&nbsp;'
   rawCmd.value = e.target.value
   setInputData()
 }
@@ -135,6 +135,7 @@ function getInputData(el) {
 
 function setInputData() {
   const inputData = getInputData(realInput.value)
+  console.log(inputData);
   const newData = {
     ...realInputData.value,
     ...inputData,

@@ -26,3 +26,28 @@ h5,
 h6 {
   font-family: "Press Start 2P", monospace;
 }
+
+h1 {
+  @apply text-heading-1;
+}
+
+h2 {
+  @apply text-heading-2;
+}
+
+h3 {
+  @apply text-heading-3;
+}
+
+h4 {
+  @apply text-heading-4;
+}
+
+h5 {
+  @apply text-heading-5;
+}
+
+h6 {
+  @apply text-heading-6;
+}
+
