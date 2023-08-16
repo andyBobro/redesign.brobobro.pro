@@ -1,5 +1,5 @@
 <template>
-  <AppLink
+  <DesktopLink
     class="inline-flex flex-col items-center"
     v-bind="{...$props}"
   >
@@ -7,9 +7,9 @@
     <div>
       <slot />
     </div>
-  </AppLink>
+  </DesktopLink>
 </template>
 
 <script lang="ts" setup>
-import AppLink from '@/components/DesktopUI/DesktopLink/index.vue'
+import DesktopLink from '@/components/desktopUI/DesktopLink/index.vue'
 </script>

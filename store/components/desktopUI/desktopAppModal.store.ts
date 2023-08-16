@@ -13,14 +13,14 @@ enum WindowStateParams {
 }
 
 interface AppModalStore {
-  active: WindowPages;
+  active: WindowPages | null;
   allIds: Array<WindowPages>;
   byId: Record<WindowPages, Record<WindowStateParams, boolean>>;
 }
 
 export interface AppModalState {
   name?: string;
-  inited: boolean | null;
+  inited?: boolean | null;
   opened?: boolean;
   fullscreen?: boolean;
   minimized?: boolean;

@@ -30,6 +30,7 @@ export default <Config>{
       '1em': '1em',
       '1ch': '1ch',
       0: '0px',
+      2: '2px',
       4: '4px',
       8: '8px',
       10: '10px',
@@ -61,39 +62,39 @@ export default <Config>{
     },
     fontSize: {
       'heading-1': [
-        '64px',
-        {
-          lineHeight: '64px',
-        },
-      ],
-      'heading-2': [
         '48px',
         {
           lineHeight: '48px',
         },
       ],
-      'heading-3': [
+      'heading-2': [
         '40px',
         {
           lineHeight: '40px',
         },
       ],
+      'heading-3': [
+        '42px',
+        {
+          lineHeight: '42px',
+        },
+      ],
       'heading-4': [
         '32px',
         {
-          lineHeight: '40px',
+          lineHeight: '32px',
         },
       ],
       'heading-5': [
         '24px',
         {
-          lineHeight: '32px',
+          lineHeight: '24px',
         },
       ],
       'heading-6': [
-        '20px',
+        '18px',
         {
-          lineHeight: '24px',
+          lineHeight: '18px',
         },
       ],
       large: [
