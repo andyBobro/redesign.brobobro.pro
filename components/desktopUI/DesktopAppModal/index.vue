@@ -16,12 +16,13 @@
     >
       <div class="flex flex-col h-full">
         <div
+          ref="el"
+          v-dbl-click="toggleFullscreenApp"
           class="flex items-center justify-between bg-neutral-50 text-gray-950 p-4"
           :class="{
             'border-dotted border-b-2 border-gray-950': minimized,
             'cursor-move': !fullscreen,
           }"
-          ref="el"
         >
           <div
             class="flex items-center flex-grow select-none"

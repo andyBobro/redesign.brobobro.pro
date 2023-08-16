@@ -1,4 +1,3 @@
-// import { defineNuxtPlugin } from '@nuxt/kit'
 function dblCLick (handler) {
   this.clicks = 0
 
@@ -22,7 +21,7 @@ function dblCLick (handler) {
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.directive('dbl-click', {
     mounted(el, binding) {
-      el.addEventListener('click', dblCLick(binding.value))
+      el.addEventListener('click', (new dblCLick(binding.value)))
     },
   })
 
