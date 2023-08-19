@@ -6,8 +6,8 @@ export default <Config>{
     './assets/**/*.{css,scss}',
     './components/*.{vue,js,ts}',
     './components/**/*.{vue,js,ts}',
-    './layouts/**/*.{vue,js,ts}',
     './layouts/*.{vue,js,ts}',
+    './layouts/**/*.{vue,js,ts}',
     './modals/**/*.{vue,js,ts}',
     './pages/*.{vue,js,ts}',
     './pages/**/*.{vue,js,ts}',
@@ -40,6 +40,7 @@ export default <Config>{
       '1em': '1em',
       '1ch': '1ch',
       0: '0px',
+      1: '1px',
       2: '2px',
       4: '4px',
       8: '8px',
@@ -151,21 +152,7 @@ export default <Config>{
     },
     extend: {
       container: {
-        null: {
-          min: '0px',
-        },
-        xs: {
-          min: `${375 - 1}px`,
-        },
-        sm: {
-          min: `${640 - 1}px`,
-        },
-        md: {
-          min: `${840 - 1}px`,
-        },
-        xl: {
-          min: `${1280 - 1}px`,
-        },
+        // TODO ADD RULES
       },
     },
   },

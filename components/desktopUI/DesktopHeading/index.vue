@@ -1,16 +1,23 @@
 <template>
   <div class="flex flex-col">
-    <div class="flex border-solid border-neutral-50">
+    <div
+      class="flex"
+      :class="[props.class, {
+        'border-b-2 border-solid border-neutral-50': !haveSubheading
+      }]"
+      v-bind="{ ...$props }"
+    >
       <component
         :is="tag"
         class="relative inline-block desktop-heading bg-neutral-50 text-gray-700 pt-[0.16em] px-[0.16em] leading-[1em]"
-        :class="props.class"
-        v-bind="{ ...$props }"
       >
         <slot />
       </component>
     </div>
-    <span class=" px-[0.16em] bg-neutral-50 text-gray-600" v-if="haveSubheading">
+    <span
+      v-if="haveSubheading"
+      class=" px-[0.16em] bg-neutral-50 text-gray-600"
+    >
       <slot name="subheading" />
     </span>
   </div>

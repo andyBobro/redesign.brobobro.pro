@@ -24,8 +24,13 @@ const props = withDefaults(defineProps<Props>(), {
 <style lang="postcss" scoped>
 ul {
   &.square {
+    @apply pl-16;
     list-style-type: square;
-    list-style-position: inside;
+    list-style-position: outside;
+
+    :deep(li) {
+      @apply first:mt-0 mt-8;
+    }
   }
 }
 </style>

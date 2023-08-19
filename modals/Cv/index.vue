@@ -1,74 +1,61 @@
 <template>
   <DesktopAppModal :type="WindowPages.cv">
-    <div class="@container/cv max-h-full overflow-y-auto">
-      <div
-        class="flex  @[0px]/cv:flex-col-reverse @[500px]/cv:flex-row gap-16 p-16"
-        :class="{
-          '': true
-        }"
+    <div class="@container/cv max-h-full overflow-y-auto p-16">
+      <DesktopHeading
+        :tag="Tags.h5"
+        class="font-bold"
       >
-        <div class="flex flex-col gap-16 w-full @[500px]/cv:w-1/3 sm">
-          <DesktopContentFrame>
-            <DesktopHeading
-              :tag="Tags.h6"
-              class="font-bold"
-            >
-              <template #default>
-                {{ t('cv.skills.heading') }}
-              </template>
-            </DesktopHeading>
-            <DesktopList class="mt-8">
-              <DesktopListItem
-                v-for="skill in skills.core"
-                :key="skill"
-              >
-                {{ t(`cv.skills.${skill}`) }}
-              </DesktopListItem>
-            </DesktopList>
-          </DesktopContentFrame>
-
-          <DesktopContentFrame>
-            <!-- <DesktopHeading
-            :tag="Tags.p"
+        <template #default>
+          {{ t('main.me.official_name') }}
+        </template>
+        <template #subheading>
+          {{ t('cv.position') }}
+        </template>
+      </DesktopHeading>
+      <div
+        class="flex @[0px]/cv:flex-col-reverse @md/cv:flex-row mt-32 gap-32"
+      >
+        <div class="flex flex-col w-full @md/cv:w-1/3 md">
+          <DesktopHeading
+            :tag="Tags.h6"
             class="font-bold"
           >
             <template #default>
-              {{ t('main.me.official_name') }}
+              {{ t('cv.skills.heading') }}
             </template>
-            <template #subheading>
-              {{ t('cv.position') }}
-            </template>
-          </DesktopHeading> -->
-
-            <DesktopHeading
-              :tag="Tags.h6"
-              class="font-bold"
+          </DesktopHeading>
+          <DesktopList class="mt-8">
+            <DesktopListItem
+              v-for="skill in skills.core"
+              :key="skill"
             >
-              <template #default>
-                {{ t('cv.about.heading') }}
-              </template>
-            </DesktopHeading>
+              {{ t(`cv.skills.${skill}`) }}
+            </DesktopListItem>
+          </DesktopList>
 
-            <DesktopText class="mt-8">
-              {{ t('cv.about.text') }}
-            </DesktopText>
-          </DesktopContentFrame>
+          <DesktopHeading
+            :tag="Tags.h6"
+            class="font-bold mt-32"
+          >
+            <template #default>
+              {{ t('cv.about.heading') }}
+            </template>
+          </DesktopHeading>
+
+          <DesktopText class="mt-8">
+            {{ t('cv.about.text') }}
+          </DesktopText>
         </div>
 
-        <div class="w-full @[500px]/cv:w-2/3">
-          <DesktopContentFrame>
-            <DesktopHeading
-              :tag="Tags.h6"
-              class="font-bold"
-            >
-              <template #default>
-                {{ t('main.me.official_name') }}
-              </template>
-              <template #subheading>
-                {{ t('cv.position') }}
-              </template>
-            </DesktopHeading>
-          </DesktopContentFrame>
+        <div class="w-full @md/cv:w-2/3">
+          <DesktopHeading
+            :tag="Tags.h6"
+            class="font-bold"
+          >
+            <template #default>
+              {{ t('cv.experience.heading') }}
+            </template>
+          </DesktopHeading>
         </div>
       </div>
     </div>
