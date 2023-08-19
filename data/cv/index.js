@@ -14,8 +14,8 @@ export const experience = [
     company: 'Cryptopay Ltd.',
     position: 'Frontend engineer',
     location: 'remote',
-    start: 'September 2020',
-    finish: 'June 2023',
+    from: 'September 2020',
+    to: 'June 2023',
     done: [
       'Developed huge part of frontend in the Cryptopay B2C app using (Vue.js)',
       'Built an I18n framework using Localize and hooked it into CI with Github Actions',

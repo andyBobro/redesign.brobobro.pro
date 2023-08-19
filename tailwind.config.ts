@@ -109,7 +109,7 @@ export default <Config>{
         },
       ],
       large: [
-        '18px',
+        '20px',
         {
           lineHeight: '24px',
         },

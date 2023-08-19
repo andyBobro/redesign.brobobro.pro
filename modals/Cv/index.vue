@@ -56,6 +56,13 @@
               {{ t('cv.experience.heading') }}
             </template>
           </DesktopHeading>
+
+          <CVExperienceItem
+            class="first:mt-0 mt-16"
+            v-for="position in experience"
+            :key="position.position"
+            :item="position"
+          />
         </div>
       </div>
     </div>
@@ -74,11 +81,14 @@ import DesktopHeading, { Tags } from '@/components/desktopUI/DesktopHeading/inde
 import DesktopText from '@/components/desktopUI/DesktopText/index.vue'
 import DesktopList from '@/components/desktopUI/DesktopList/index.vue'
 import DesktopListItem from '@/components/desktopUI/DesktopListItem/index.vue'
+import CVExperienceItem from '@/components/cv/CVExperienceItem/index.vue'
 import DesktopAppModal from '@/components/desktopUI/DesktopAppModal/index.vue'
 import { WindowPages } from '@/enums/pagesNames'
 import { useI18n } from "vue-i18n";
-import { skills } from '@/data/cv/index'
+import { skills, experience } from '@/data/cv/index'
 
 const { t } = useI18n();
+
+console.log(experience);
 
 </script>
