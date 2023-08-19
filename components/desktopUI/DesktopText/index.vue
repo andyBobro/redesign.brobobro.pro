@@ -1,5 +1,5 @@
 <template>
-  <p>
+  <p v-bind="{...$props, ...$attrs}">
     <slot />
   </p>
 </template>

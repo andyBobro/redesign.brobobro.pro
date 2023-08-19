@@ -2,5 +2,7 @@
   "main.me.official_name": "Andrey Bobrov",
   "main.me.nick_name": "Bro Bobro",
   "cv.position": "fullstack developer (focusing on frontend)",
-  "cv.about_text": "Hello! My name is Andrey, I'm experienced and creative software engineer developing web applications since 2014, particularly focusing on the front end. I have gained considerable expertise in building architecture and implementing various features, including the development of UI, making integrations with third-party services, and development of microservices and CI."
+  "cv.skills.heading": "Skills",
+  "cv.about.heading": "About",
+  "cv.about.text": "Hello! My name is Andrey, I'm experienced and creative software engineer developing web applications since 2014, particularly focusing on the front end. I have gained considerable expertise in building architecture and implementing various features, including the development of UI, making integrations with third-party services, and development of microservices and CI."
 }

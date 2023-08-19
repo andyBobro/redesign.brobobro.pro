@@ -1,38 +1,54 @@
 <template>
-  <div class="flex border-solid border-b-[0.4em] border-neutral-50">
-    <component
-      class="relative inline-block desktop-heading bg-neutral-50 text-gray-700 pt-[0.16em] px-[0.16em] leading-[1em]"
-      :is="headingComponent"
-      v-bind="{ ...$props }"
-    >
-      <slot />
-    </component>
+  <div class="flex flex-col">
+    <div class="flex border-solid border-neutral-50">
+      <component
+        :is="tag"
+        class="relative inline-block desktop-heading bg-neutral-50 text-gray-700 pt-[0.16em] px-[0.16em] leading-[1em]"
+        :class="props.class"
+        v-bind="{ ...$props }"
+      >
+        <slot />
+      </component>
+    </div>
+    <span class=" px-[0.16em] bg-neutral-50 text-gray-600" v-if="haveSubheading">
+      <slot name="subheading" />
+    </span>
   </div>
-  
 </template>
 
-<script setup lang="ts">
-import { computed } from 'vue'
+<script lang="ts">
+export const Tags = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  strong: 'strong',
+  small: 'small',
+  p: 'p',
+} as const;
 
-enum HeadingSizes {
-  H1 = 1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-}
+type Tag = keyof typeof Tags;
+</script>
+
+<script setup lang="ts">
+import { computed, useSlots } from 'vue'
 
 interface Props {
-  size?: HeadingSizes
+  tag?: Tag,
+  class?: string,
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: HeadingSizes.H1
+  tag: Tags.h1,
+  class: ''
 })
 
-const headingComponent = computed(() => {
-  return `h${props.size}`
+const slots = useSlots()
+
+const haveSubheading = computed(() => {
+  return !!slots.subheading
 })
 </script>
 
@@ -45,7 +61,7 @@ const headingComponent = computed(() => {
           top-0 
           bottom-0 
           border-solid 
-          border-[0.58em] 
+          border-[0.6em] 
           border-transparent 
           border-l-neutral-50 
           border-b-neutral-50;
