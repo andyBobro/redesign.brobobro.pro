@@ -1,0 +1,1 @@
+// node autoname vue sfc

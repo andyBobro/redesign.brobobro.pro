@@ -1,5 +1,8 @@
 <template>
-  <div ref="entryWrapper" class="relative flex items-start">
+  <div
+    ref="entryWrapper"
+    class="relative flex items-start"
+  >
     <div class="relative h-[190px] w-[190px]">
       <h1
         ref="entryGridLetter"
@@ -29,7 +32,7 @@
               'bg-white': !state.grid[i].active,
               'bg-black': state.grid[i].active,
             }"
-          ></div>
+          />
         </div>
       </div>
     </div>
@@ -152,9 +155,9 @@ onMounted(async () => {
     keyframes: turnOn,
   }).finished
 
-  // const introJingle = new Audio('/sounds/effects/entry-intro.mp3')
+  const introJingle = new Audio('/sounds/effects/entry-intro.mp3')
 
-  // introJingle.play()
+  introJingle.play()
 
   await Promise.all(
     outerRefs.value.map((ref) => {

@@ -3,10 +3,20 @@ import { Config } from 'tailwindcss';
 
 export default <Config>{
   content: [
-    'app.vue'
-    // Add all files that contain Tailwind classes
-    // e.g. './modules/**/*.{vue,js,ts}',
-  ], 
+    './assets/**/*.{css,scss}',
+    './components/*.{vue,js,ts}',
+    './components/**/*.{vue,js,ts}',
+    './layouts/*.{vue,js,ts}',
+    './layouts/**/*.{vue,js,ts}',
+    './modals/**/*.{vue,js,ts}',
+    './pages/*.{vue,js,ts}',
+    './pages/**/*.{vue,js,ts}',
+    './plugins/*.{vue,js,ts}',
+    './plugins/**/*.{vue,js,ts}',
+    './store/*.{vue,js,ts}',
+    './store/**/*.{vue,js,ts}',
+  ],
+
   theme: {
     screens: {
       null: {
@@ -30,6 +40,7 @@ export default <Config>{
       '1em': '1em',
       '1ch': '1ch',
       0: '0px',
+      1: '1px',
       2: '2px',
       4: '4px',
       8: '8px',
@@ -98,29 +109,29 @@ export default <Config>{
         },
       ],
       large: [
-        '18px',
+        '20px',
         {
-          lineHeight: '27px',
+          lineHeight: '24px',
         },
       ],
       body: [
-        '16px',
+        '18px',
         {
-          lineHeight: '24px',
+          lineHeight: '20px',
           letterSpacing: '0.16px',
         },
       ],
       DEFAULT: [
-        '16px',
+        '18px',
         {
-          lineHeight: '24px',
+          lineHeight: '20px',
           letterSpacing: '0.16px',
         },
       ],
       footnote: [
-        '14px',
+        '16px',
         {
-          lineHeight: '20px',
+          lineHeight: '18px',
           letterSpacing: '0.16px',
         },
       ],
@@ -140,7 +151,12 @@ export default <Config>{
       ],
     },
     extend: {
+      container: {
+        // TODO ADD RULES
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/container-queries'),
+  ],
 }
