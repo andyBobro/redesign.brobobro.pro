@@ -55,15 +55,9 @@ import { ref, onMounted } from 'vue'
 import DesktopUI from '@/components/desktopUI/DesktopUI/index.vue';
 import DesktopTopBar from '@/components/desktopUI/DesktopTopBar/index.vue';
 import DesktopBottomBar from '@/components/desktopUI/DesktopBottomBar/index.vue';
-import DesktopLink from '@/components/desktopUI/DesktopShortcut/index.vue';
 import { PagesNames } from '@/enums/pagesNames'
-import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
-import { remove } from 'lodash';
 
-const modalStore = useDesktopAppModalsStore()
-const route = useRoute()
-
-const mounted = ref(false)
+const mounted :Ref<boolean> = ref(false)
 
 onMounted(() => {
   mounted.value = true

@@ -7,17 +7,18 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useTimestamp } from '@vueuse/core'
+import type { UseTimestampReturn } from '@vueuse/core'
 
-const timestamp = useTimestamp({ offset: 0 })
+const timestamp :UseTimestampReturn | Ref<number> = useTimestamp({ offset: 0 })
 
-const time = computed(() => {
-  const now = new Date(timestamp.value)
-  const day = now.getDate()
-  const month = now.getMonth()
-  const year = now.getFullYear()
-  const hour = now.getHours()
-  const minute = now.getMinutes()
-  const seconds = now.getSeconds()
+const time :ComputedRef<string> = computed(() :string => {
+  const now :Date = new Date(timestamp.value)
+  const day :number = now.getDate()
+  const month :number = now.getMonth()
+  const year :number = now.getFullYear()
+  const hour :number = now.getHours()
+  const minute :number = now.getMinutes()
+  const seconds :number = now.getSeconds()
   return `${hour}:${minute}:${seconds} ${day}.${month}.${year}`
 })
 </script>
