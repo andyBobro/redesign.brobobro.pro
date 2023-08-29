@@ -15,7 +15,7 @@ import { onMounted, nextTick, defineAsyncComponent } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router'
 import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
 import { PagesNames, WindowPages } from '@/enums/pagesNames'
-import { camelCase, startCase } from 'lodash';
+import lodash from 'lodash';
 import { appsStringDiff } from '@/utils/desktopUI/apps'
 
 const route = useRoute()
@@ -31,7 +31,7 @@ const windows = computed(() => {
 
   return winArr.reduce((_, app) => {
     if (Object.values(WindowPages).includes(app as WindowPages)) {
-      const modal = startCase(camelCase(app)).replace(/ /g, '');
+      const modal = lodash.startCase(lodash.camelCase(app)).replace(/ /g, '');
       _.push(defineAsyncComponent(() => import(`../../modals/${modal}/index.vue`)))
 
       return _
