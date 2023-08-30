@@ -8,9 +8,9 @@ export default defineNuxtConfig({
   },],
   css: [
     '@/assets/styles/css/tailwind.css',
-    '@/assets/styles/css/fonts.css',
-    '@/assets/styles/css/global.css',
+    // '@/assets/styles/css/fonts.css',
     '@/assets/styles/css/keyframes.css',
+    '@/assets/styles/css/global.css',
   ],
   vite: {
     plugins: [
@@ -21,6 +21,18 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@intlify/nuxt3',
     '@pinia/nuxt',
+    ['@nuxtjs/google-fonts', {
+      families: {
+        'Press Start 2P': [400],
+        VT323: [400],
+      },
+      outputDir: '@/assets',
+      // overwriting: true,
+      preload: true,
+      stylePath: 'assets/styles/css/fonts.css',
+      fontsDir: 'fonts',
+      fontsPath: '/assets/fonts'
+    }],
   ],
   intlify: {
     localeDir: 'locales',
@@ -28,5 +40,8 @@ export default defineNuxtConfig({
       locale: 'en',
       fallbackLocale: 'en'
     }
+  },
+  googleFonts: {
+    preload: true,
   }
 })
