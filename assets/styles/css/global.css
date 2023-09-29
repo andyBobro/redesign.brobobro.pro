@@ -15,7 +15,10 @@ body,
 
 body {
   @apply font-normal text-body text-neutral-50 bg-gray-800;
-  font-family: "VT323", monospace;
+  font-family: "Press Start 2P", "VT323", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
 }
 
 h1,
@@ -53,13 +56,28 @@ h6 {
 
 p {
   @apply text-body;
+  font-family: "VT323", monospace;
 }
 
 strong {
   @apply text-large;
+  font-family: "VT323", monospace;
 }
 
 small {
   @apply text-footnote;
+  font-family: "VT323", monospace;
+}
+
+span {
+  font-family: "VT323", monospace;
+}
+
+div {
+  font-family: "VT323", monospace;
+}
+
+canvas {
+  font-family: "Press Start 2P";
 }
 

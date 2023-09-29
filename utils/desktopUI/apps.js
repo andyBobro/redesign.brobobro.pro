@@ -33,5 +33,5 @@ export function removeAppFromAppsString(appStr, strToRemove) {
   
   result = [...appsSet].join(',');
   console.log('result', result);
-  return result.length ? result : null
+  return result.length && result || null
 }
