@@ -58,7 +58,7 @@
           </DesktopHeading>
 
           <CVExperienceItem
-            class="first:mt-0 mt-16"
+            class="first:mt-0 pb-24 mt-24 border-b-[1px] border-neutral-400"
             v-for="position in experience"
             :key="position.position"
             :item="position"
