@@ -10,28 +10,36 @@
 
 <script lang="ts" setup>
 import { RouteLocation } from 'vue-router';
-import { computed, defineEmits } from 'vue';
+import { computed } from 'vue';
 import { WindowPages } from '@/enums/pagesNames'
 import { useDesktopAppModalsStore } from '@/store/components/desktopUI/desktopAppModal.store'
+// import { NuxtLinkProps, DefineComponent } from 'nuxt';
+// import type { DefineComponent, NuxtLinkProps } from 'nuxt'
 
 interface Props {
   to?: RouteLocation,
   href?: string,
 }
 
+interface Emits {
+  (e: 'click', event: Event) :void
+}
+
 const props = defineProps<Props>()
 
-const emit = defineEmits(['click', 'appClick'])
+const emit = defineEmits<Emits>()
 
-const route = useRoute()
+const route :RouteLocation = useRoute()
 
 const router = useRouter()
 
 const modalStore = useDesktopAppModalsStore()
 
-const isAppLink = computed(() => !!WindowPages[props.to?.params?.app])
+const isAppLink = computed(() :boolean => !!WindowPages[props.to?.params?.app])
 
-const linkComponent = computed(() => {
+type LinkComponent = ReturnType<typeof defineNuxtLink> | 'button'
+
+const linkComponent = computed(() :LinkComponent => {
   const { to, href } = props
 
   if (isAppLink.value) {
@@ -45,9 +53,7 @@ const linkComponent = computed(() => {
   return 'button'
 })
 
-function onClick (e) {
-  console.log(e);
-  
+function onClick (e :Event) :void {
   if (isAppLink.value) {
     appHandler()
     return
@@ -57,12 +63,10 @@ function onClick (e) {
 }
 
 function appHandler () {
-  console.log(props);
-  
   const { to } = props
   const currentAppsSet = new Set(route.params.app?.split(',') || [])
   const toApp = to.params?.app
-  const isToAppCurrent = currentAppsSet.has(toApp)
+  const isToAppCurrent = currentAppsSet.has(toApp) // implement diff
   let newAppsString = ''
 
   if (isToAppCurrent) {

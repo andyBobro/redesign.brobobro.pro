@@ -37,24 +37,25 @@ export const Tags = {
 } as const;
 
 type Tag = keyof typeof Tags;
-</script>
-
-<script setup lang="ts">
-import { computed, useSlots } from 'vue'
 
 interface Props {
   tag?: Tag,
   class?: string,
 }
+</script>
 
-const props = withDefaults(defineProps<Props>(), {
+<script setup lang="ts">
+import type { Slots } from 'vue';
+import { computed, useSlots } from 'vue'
+
+const props :Props = withDefaults(defineProps<Props>(), {
   tag: Tags.h1,
-  class: ''
+  class: '',
 })
 
-const slots = useSlots()
+const slots :Slots = useSlots()
 
-const haveSubheading = computed(() => {
+const haveSubheading :ComputedRef<boolean> = computed(() :boolean => {
   return !!slots.subheading
 })
 </script>
