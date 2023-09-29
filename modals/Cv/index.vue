@@ -58,10 +58,10 @@
           </DesktopHeading>
 
           <CVExperienceItem
-            class="first:mt-0 pb-24 mt-24 border-b-[1px] border-neutral-400"
             v-for="position in experience"
             :key="position.position"
             :item="position"
+            class="first:mt-0 pb-24 mt-24 border-b-[1px] border-neutral-400"
           />
         </div>
       </div>
@@ -76,7 +76,6 @@ export default {
 </script>
 
 <script setup>
-import DesktopContentFrame from '@/components/desktopUI/DesktopContentFrame/index.vue'
 import DesktopHeading, { Tags } from '@/components/desktopUI/DesktopHeading/index.vue'
 import DesktopText from '@/components/desktopUI/DesktopText/index.vue'
 import DesktopList from '@/components/desktopUI/DesktopList/index.vue'
